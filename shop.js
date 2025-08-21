@@ -3,6 +3,7 @@ const PRODUCTS = {
   banana: { name: "Banana", emoji: "🍌" },
   lemon: { name: "Lemon", emoji: "🍋" },
   orange: { name: "Orange", emoji: "🍊" },
+  strawberry: { name: "Strawberry", emoji: "🍓" },
 };
 
 function getBasket() {
@@ -13,6 +14,10 @@ function getBasket() {
 function addToBasket(product) {
   const basket = getBasket();
   basket.push(product);
+  // Promo: every orange includes a free strawberry
+  if (product === "orange") {
+    basket.push("strawberry");
+  }
   localStorage.setItem("basket", JSON.stringify(basket));
 }
 
